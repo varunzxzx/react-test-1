@@ -9,10 +9,8 @@ const pusher = new Pusher({
   encrypted: true
 });
 
-router.get('/',(req,res) => {
-    pusher.trigger('message', 'new', {
-        "message": "hello world"
-    });      
+router.get('/get_id',(req,res) => {
+     return res.status(200).json({user_id: Date.now()});
 })
 
 module.exports = router;
