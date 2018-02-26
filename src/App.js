@@ -29,7 +29,7 @@ class App extends Component {
           alert(data.message);
         });
         const {user_id} = response.data;
-        thiss.setState({loading: true, user_id})
+        thiss.setState({loading: true, user_id, username})
       })
       .catch(err => {throw err})
   }
@@ -39,14 +39,24 @@ class App extends Component {
   }
 
   handleMessage = () => {
-    const {message, toUser} = this.state;
-    axios.post('/send',{message, toUser})
-      .then(response => {
-        console.log("Message sent")
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    const {message, toUser, username} = this.state;
+    const payload = {message, toUser, username}
+    console.log(payload);
+    axios({
+      method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+            url: '/send',
+            mode: 'cors',
+            data: JSON.stringify(payload)
+        })
+        .then(function (response) {
+          console.log("Message sent")
+        })
+        .catch(function (error) {
+          console.log(error)
+        });
   }
 
   render() {
@@ -56,10 +66,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <label htmlFor="toUser" onChange={this.handleFormChange}>To User</label>
-        <input type="text" id="toUser"/>
-        <label htmlFor="message" onChange={this.handleFormChange}>Message</label>
-        <input type="text" id="message"/>
+        <label htmlFor="toUser">To User</label>
+        <input type="text" id="toUser" onChange={this.handleFormChange} name="toUser"/>
+        <label htmlFor="message">Message</label>
+        <input type="text" id="message" onChange={this.handleFormChange} name="message"/>
         <div>
           <button onClick={this.handleMessage}>Send</button>
         </div>

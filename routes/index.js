@@ -11,8 +11,17 @@ const pusher = new Pusher({
 
 const users = {};
 
+router.use(function (req, res, next) {
+  try {
+      req.body = JSON.parse(Object.keys(req.body)[0]);
+  } catch (err) {
+      req.body = req.body;
+  }
+  next();
+});
+
 router.get('/get_id',(req,res) => {
-    const {username} = req.params;
+    const {username} = req.query;
     const user_id = Date.now().toString();
     users[username] = user_id;
     return res.status(200).json({user_id});
@@ -21,7 +30,7 @@ router.get('/get_id',(req,res) => {
 router.post('/send',(req,res) => {
   const {username, toUser, message} = req.body;
   const channel = users[toUser];
-  pusher.trigger(channel,'new-message',{message, toUser})
+  pusher.trigger(channel,'new-message',{message, toUser, username})
   return res.status(200).send({success: true})
 });
 
