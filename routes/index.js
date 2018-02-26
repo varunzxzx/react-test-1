@@ -9,8 +9,13 @@ const pusher = new Pusher({
   encrypted: true
 });
 
+const users = {};
+
 router.get('/get_id',(req,res) => {
-     return res.status(200).json({user_id: Date.now()});
+    const {username} = req.params;
+    const user_id = Date.now().toString();
+    users[username] = user_id;
+    return res.status(200).json({user_id});
 })
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import logo from './logo.svg';
 
 import './App.css';
@@ -11,21 +11,25 @@ class App extends Component {
   };
 
   componentWillMount() {
+    const thiss = this;
     Pusher.logToConsole = true;
-
+    const username = prompt("Enter your username");
     var pusher = new Pusher('fab90205c31a00dadad5', {
       cluster: 'ap2',
       encrypted: true
     });
 
-    //listen to new message
-    var channel = pusher.subscribe('message');
-    channel.bind('new', function(data) {
-      alert(data.message);
-    });
-    // this.callApi()
-    //   .then(res => this.setState({ response: res.express }))
-    //   .catch(err => console.log(err));
+    axios.get(`/get_id?username=${username}`)
+      .then(response => {
+        //listen to new-message
+        var channel = pusher.subscribe(response.data.user_id);
+        channel.bind('new-message', function(data) {
+          alert(data.message);
+        });
+        const {user_id} = response.data;
+        thiss.setState({loading: true, user_id})
+      })
+      .catch(err => {throw err})
   }
 
   render() {
