@@ -7,7 +7,9 @@ import Pusher from 'pusher-js';
 
 class App extends Component {
   state = {
-    response: ''
+    response: '',
+    message: '',
+    toUser: ''
   };
 
   componentWillMount() {
@@ -32,6 +34,21 @@ class App extends Component {
       .catch(err => {throw err})
   }
 
+  handleFormChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  handleMessage = () => {
+    const {message, toUser} = this.state;
+    axios.post('/send',{message, toUser})
+      .then(response => {
+        console.log("Message sent")
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -39,7 +56,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">{this.state.response || null}</p>
+        <label htmlFor="toUser" onChange={this.handleFormChange}>To User</label>
+        <input type="text" id="toUser"/>
+        <label htmlFor="message" onChange={this.handleFormChange}>Message</label>
+        <input type="text" id="message"/>
+        <div>
+          <button onClick={this.handleMessage}>Send</button>
+        </div>
       </div>
     );
   }

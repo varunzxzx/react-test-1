@@ -18,4 +18,11 @@ router.get('/get_id',(req,res) => {
     return res.status(200).json({user_id});
 })
 
+router.post('/send',(req,res) => {
+  const {username, toUser, message} = req.body;
+  const channel = users[toUser];
+  pusher.trigger(channel,'new-message',{message, toUser})
+  return res.status(200).send({success: true})
+});
+
 module.exports = router;
