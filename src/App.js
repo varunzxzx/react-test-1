@@ -76,7 +76,7 @@ class App extends Component {
     const {userslist, username} = this.state;
     return (
       <div className="App">
-        <UserList userslist={userslist} username={username}/>
+        <UserList userslist={userslist}/>
         <ChatBox />
       </div>
     );
