@@ -1,37 +1,46 @@
 .List {
-    width: 100%;
-    border: 1px solid #DDD;
-    padding-top: 30px;
-    float: left;
-  }
-  
-  .row {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
-    cursor: pointer;
-  }
+  width: 100%;
+  border: 1px solid #DDD;
+}
 
-  .row:hover {
-    background: rgba(0,0,0,0.1);
-  }
+.users-list {
+  float: left;
+}
 
-  .letter {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 40px;
-    color: white;
-    font-size: 1.5em;
-    margin-right: 25px;
-  }
-  .name {
-    font-weight: bold;
-    margin-bottom: 2px;
-  }
+.sub-head {
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.row {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #fff;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.row:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+.letter {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 40px;
+  color: white;
+  font-size: 1.5em;
+  margin-right: 25px;
+}
+.name {
+  font-weight: bold;
+  margin-bottom: 2px;
+}

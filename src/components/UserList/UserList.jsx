@@ -38,8 +38,8 @@ class UserList extends Component {
         super(props);
 
         this.state = {
-            listHeight: 500,
-            listRowHeight: 50,
+            listHeight: 600,
+            listRowHeight: 60,
             overscanRowCount: 10,
             scrollToIndex: undefined,
             showScrollingPlaceholder: false,
@@ -57,17 +57,20 @@ class UserList extends Component {
         } = this.state;
 
         return (
-            <List
-                ref="List"
-                className={"List"}
-                height={listHeight}
-                overscanRowCount={overscanRowCount}
-                rowCount={rowCount}
-                rowRenderer={rowRenderer}
-                scrollToIndex={scrollToIndex}
-                rowHeight={listRowHeight}
-                width={350}
-            />
+            <div className="users-list">
+                <h3 className="sub-head">Active Users</h3>
+                <List
+                    ref="List"
+                    className={"List"}
+                    height={listHeight}
+                    overscanRowCount={overscanRowCount}
+                    rowCount={rowCount}
+                    rowRenderer={rowRenderer}
+                    scrollToIndex={scrollToIndex}
+                    rowHeight={listRowHeight}
+                    width={350}
+                />
+            </div>
         )
     }
 }
