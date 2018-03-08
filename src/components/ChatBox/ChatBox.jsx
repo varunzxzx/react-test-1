@@ -17,12 +17,16 @@ class ChatBox extends Component {
     }
 
     handleFormChange = (e) => {
-        this.setState({message: e.target.value})
+        if(e.which === 13) {
+            this.submit()
+        } else {
+            this.setState({message: e.target.value})
+        }
     }
 
     submit = () => {
         const {message} = this.state
-        if(message) {
+        if(message){
             this.props.handleMessage(message)
         }
     }
@@ -49,7 +53,7 @@ class ChatBox extends Component {
                     </div>
                 </div>
                 <div className="myInput">
-                    <Input onChange={this.handleFormChange} action={{ color: 'blue', content: 'Send', onClick: this.submit}} fluid placeholder='Enter your message here...' />
+                    <Input onChange={this.handleFormChange} onKeyDown={this.handleFormChange} action={{ color: 'blue', content: 'Send', onClick: this.submit}} fluid placeholder='Enter your message here...' />
                 </div>
             </div>
         )

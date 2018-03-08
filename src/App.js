@@ -54,7 +54,7 @@ class App extends Component {
   handleMessage = (message) => {
     const {toUser, username} = this.state;
     const payload = {message, toUser, username}
-    console.log(payload);
+    if(toUser)
     axios({
       method: 'POST',
         headers: {
