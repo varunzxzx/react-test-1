@@ -59,12 +59,12 @@ class UserList extends Component {
         return (
             <div className="users-list">
                 <h3 className="sub-head">Active Users</h3>
-                <AutoSizer disableHeight>
-                    {({width}) => (
+                <AutoSizer >
+                    {({width, height}) => (
                         <List
                             ref="List"
                             className={"List"}
-                            height={listHeight}
+                            height={height}
                             overscanRowCount={overscanRowCount}
                             rowCount={rowCount}
                             rowRenderer={rowRenderer}

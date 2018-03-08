@@ -1,6 +1,7 @@
 .chat {
     float: left;
     width: 70%;
+    height: 100%;
     box-sizing: border-box;
     border: 4px solid black;
 }
