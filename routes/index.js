@@ -22,6 +22,7 @@ router.use(function (req, res, next) {
 
 router.get('/get_id',(req,res) => {
     const {username} = req.query;
+    if(username === "null" || username === "undefined") return res.status(400).send({success: false});
     const user_id = Date.now().toString();
     users[username] = user_id;
     return res.status(200).json({user_id});
