@@ -33,30 +33,6 @@ class ChatBox extends Component {
                     <div className="message other">
                         Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
                     </div>
-                    <div className="message self">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div>
-                    <div className="message other">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div>
-                    <div className="message self">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div><div className="message other">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div>
-                    <div className="message self">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div><div className="message other">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div>
-                    <div className="message self">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div><div className="message other">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div>
-                    <div className="message self">
-                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-                    </div>
                 </div>
                 <div className="myInput">
                     <Input action={{ color: 'blue', content: 'Send' }} fluid placeholder='Enter your message here...' />
