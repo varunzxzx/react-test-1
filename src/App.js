@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
-
+import UserList from './components/UserList/UserList'
 import './App.css';
 import Pusher from 'pusher-js';
 
@@ -73,6 +73,7 @@ class App extends Component {
         <div>
           <button onClick={this.handleMessage}>Send</button>
         </div>
+        <UserList />
       </div>
     );
   }
