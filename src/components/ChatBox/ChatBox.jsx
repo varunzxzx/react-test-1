@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './ChatBox.css'
 class ChatBox extends Component {
     constructor(props) {
         super(props);
@@ -15,13 +15,7 @@ class ChatBox extends Component {
     render() {
         return(
             <div className="chat">
-                <label htmlFor="toUser">To User</label>
-                <input type="text" id="toUser" onChange={this.handleFormChange} name="toUser"/>
-                <label htmlFor="message">Message</label>
-                <input type="text" id="message" onChange={this.handleFormChange} name="message"/>
-                <div>
-                    <button type="submit">Send</button>
-                </div>
+                ngfn
             </div>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { List } from 'react-virtualized';
+import { List, AutoSizer } from 'react-virtualized';
 import './UserList.css'
 const list = [
     'Brian Vaughn',
@@ -59,17 +59,21 @@ class UserList extends Component {
         return (
             <div className="users-list">
                 <h3 className="sub-head">Active Users</h3>
-                <List
-                    ref="List"
-                    className={"List"}
-                    height={listHeight}
-                    overscanRowCount={overscanRowCount}
-                    rowCount={rowCount}
-                    rowRenderer={rowRenderer}
-                    scrollToIndex={scrollToIndex}
-                    rowHeight={listRowHeight}
-                    width={350}
-                />
+                <AutoSizer disableHeight>
+                    {({width}) => (
+                        <List
+                            ref="List"
+                            className={"List"}
+                            height={listHeight}
+                            overscanRowCount={overscanRowCount}
+                            rowCount={rowCount}
+                            rowRenderer={rowRenderer}
+                            scrollToIndex={scrollToIndex}
+                            rowHeight={listRowHeight}
+                            width={width}
+                        />
+                    )}
+                </AutoSizer>
             </div>
         )
     }
