@@ -73,7 +73,7 @@ class App extends Component {
   }
 
   render() {
-    const {userslist, username} = this.state;
+    const {userslist} = this.state;
     return (
       <div className="App">
         <UserList userslist={userslist}/>
