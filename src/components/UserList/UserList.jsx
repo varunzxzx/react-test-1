@@ -21,8 +21,11 @@ class UserList extends Component {
     componentWillReceiveProps = (props) => {
         userslist = props.userslist;
         const rowCount = userslist.length;
-        console.log(userslist, rowCount)
         this.setState({userslist, rowCount})
+    }
+
+    handleClick = (toUser) => {
+        this.props.handleClick(toUser)
     }
 
     rowRenderer = ({
@@ -34,7 +37,7 @@ class UserList extends Component {
     }) => {
         const datum = userslist[index] || 'Loading';
         return (
-            <div className={"row"} key={key} style={style}>
+            <div className={"row"} key={key} style={style} onClick={() => {this.handleClick(datum)}}>
                 <div
                 className={"letter"}
                 style={{

@@ -10,7 +10,8 @@ class App extends Component {
     message: '',
     toUser: '',
     userslist: [],
-    loading: true
+    loading: true,
+    active: ''
   };
 
   componentWillMount() {
@@ -72,12 +73,16 @@ class App extends Component {
         });
   }
 
+  handleClick = (toUser) => {
+    this.setState({active: toUser})
+  }
+
   render() {
-    const {userslist} = this.state;
+    const {userslist, active} = this.state;
     return (
       <div className="App">
-        <UserList userslist={userslist}/>
-        <ChatBox />
+        <UserList handleClick={this.handleClick} userslist={userslist}/>
+        <ChatBox active={active}/>
       </div>
     );
   }

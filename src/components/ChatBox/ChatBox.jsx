@@ -5,8 +5,15 @@ class ChatBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ''
+            message: '',
+            active: 'React Chat Application'
         }
+    }
+
+    componentWillReceiveProps = (props) => {
+        const {active} = props;
+        if(active)
+            this.setState({active})
     }
 
     handleFormChange = (e) => {
@@ -22,9 +29,9 @@ class ChatBox extends Component {
                     style={{
                         backgroundColor: "rgb(63, 81, 181)",
                 }}>
-                    M
+                    {this.state.active.charAt(0).toUpperCase()}
                 </div>
-                Matthew
+                {this.state.active}
                 </Header>
                 <div className="message-box">
                     <div className="message self">
