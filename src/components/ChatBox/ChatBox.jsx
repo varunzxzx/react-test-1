@@ -6,18 +6,25 @@ class ChatBox extends Component {
         super(props);
         this.state = {
             message: '',
-            active: 'React Chat Application'
+            toUser: 'React Chat Application'
         }
     }
 
     componentWillReceiveProps = (props) => {
-        const {active} = props;
-        if(active)
-            this.setState({active})
+        const {toUser} = props;
+        if(toUser)
+            this.setState({toUser})
     }
 
     handleFormChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({message: e.target.value})
+    }
+
+    submit = () => {
+        const {message} = this.state
+        if(message) {
+            this.props.handleMessage(message)
+        }
     }
 
     render() {
@@ -29,9 +36,9 @@ class ChatBox extends Component {
                     style={{
                         backgroundColor: "rgb(63, 81, 181)",
                 }}>
-                    {this.state.active.charAt(0).toUpperCase()}
+                    {this.state.toUser.charAt(0).toUpperCase()}
                 </div>
-                {this.state.active}
+                {this.state.toUser}
                 </Header>
                 <div className="message-box">
                     <div className="message self">
@@ -42,7 +49,7 @@ class ChatBox extends Component {
                     </div>
                 </div>
                 <div className="myInput">
-                    <Input action={{ color: 'blue', content: 'Send' }} fluid placeholder='Enter your message here...' />
+                    <Input onChange={this.handleFormChange} action={{ color: 'blue', content: 'Send', onClick: this.submit}} fluid placeholder='Enter your message here...' />
                 </div>
             </div>
         )

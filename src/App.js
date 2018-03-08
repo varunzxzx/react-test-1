@@ -10,8 +10,7 @@ class App extends Component {
     message: '',
     toUser: '',
     userslist: [],
-    loading: true,
-    active: ''
+    loading: true
   };
 
   componentWillMount() {
@@ -52,8 +51,8 @@ class App extends Component {
       .catch(err => {throw err})
   }
 
-  handleMessage = () => {
-    const {message, toUser, username} = this.state;
+  handleMessage = (message) => {
+    const {toUser, username} = this.state;
     const payload = {message, toUser, username}
     console.log(payload);
     axios({
@@ -74,15 +73,15 @@ class App extends Component {
   }
 
   handleClick = (toUser) => {
-    this.setState({active: toUser})
+    this.setState({toUser})
   }
 
   render() {
-    const {userslist, active} = this.state;
+    const {userslist, toUser} = this.state;
     return (
       <div className="App">
         <UserList handleClick={this.handleClick} userslist={userslist}/>
-        <ChatBox active={active}/>
+        <ChatBox handleMessage={this.handleMessage} toUser={toUser}/>
       </div>
     );
   }
