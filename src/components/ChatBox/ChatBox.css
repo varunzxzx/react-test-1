@@ -26,7 +26,7 @@
 
 .message-box {
     overflow-y: scroll;
-    height: 75%;
+    height: 80%;
 }
 
 .message-box::after {
