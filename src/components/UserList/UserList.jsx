@@ -1,51 +1,54 @@
 import React, { Component } from 'react'
 import { List, AutoSizer } from 'react-virtualized';
 import './UserList.css'
-const list = [
-    'Brian Vaughn',
-    'hgfhfghfg',
-    'hghfghfgj',
-    'utyuwqbbg',
-    'hthwpqnjv'
-];
 
-function rowRenderer ({
-    key,    
-    index,    
-    isScrolling,
-    isVisible,
-    style
-}) {
-    const datum = list[index];
-    return (
-        <div className={"row"} key={key} style={style}>
-            <div
-            className={"letter"}
-            style={{
-                backgroundColor: "rgb(63, 81, 181)",
-            }}>
-                {datum.charAt(0).toUpperCase()}
-            </div>
-            <div>
-                <div className={"name"}>{datum}</div>
-            </div>
-        </div>
-    );
-}
+let userslist = []
 
 class UserList extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             listRowHeight: 60,
             overscanRowCount: 10,
             scrollToIndex: undefined,
             showScrollingPlaceholder: false,
             useDynamicRowHeight: false,
-            rowCount: list.length
+            rowCount: 1,
+            userslist: []
           };
     }
+
+    componentWillReceiveProps = (props) => {
+        userslist = props.userslist;
+        const rowCount = userslist.length;
+        console.log(userslist, rowCount)
+        this.setState({userslist, rowCount})
+    }
+
+    rowRenderer = ({
+        key,    
+        index,    
+        isScrolling,
+        isVisible,
+        style
+    }) => {
+        const datum = userslist[index] || 'Loading';
+        return (
+            <div className={"row"} key={key} style={style}>
+                <div
+                className={"letter"}
+                style={{
+                    backgroundColor: "rgb(63, 81, 181)",
+                }}>
+                    {datum.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                    <div className={"name"}>{datum}</div>
+                </div>
+            </div>
+        );
+    }    
+
     render() {
         const {
             listRowHeight,
@@ -57,7 +60,7 @@ class UserList extends Component {
         return (
             <div className="users-list">
                 <h3 className="sub-head">Active Users</h3>
-                <AutoSizer >
+                {userslist.length !== 0 && <AutoSizer >
                     {({width, height}) => (
                         <List
                             ref="List"
@@ -65,13 +68,13 @@ class UserList extends Component {
                             height={height}
                             overscanRowCount={overscanRowCount}
                             rowCount={rowCount}
-                            rowRenderer={rowRenderer}
+                            rowRenderer={this.rowRenderer}
                             scrollToIndex={scrollToIndex}
                             rowHeight={listRowHeight}
                             width={width}
                         />
                     )}
-                </AutoSizer>
+                </AutoSizer>}
             </div>
         )
     }

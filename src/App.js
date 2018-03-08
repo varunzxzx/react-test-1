@@ -8,7 +8,9 @@ class App extends Component {
   state = {
     response: '',
     message: '',
-    toUser: ''
+    toUser: '',
+    userslist: [],
+    loading: true
   };
 
   componentWillMount() {
@@ -28,7 +30,23 @@ class App extends Component {
           alert(data.message);
         });
         const {user_id} = response.data;
-        thiss.setState({loading: true, user_id, username})
+        thiss.setState({loading: false, user_id, username})
+      })
+      .catch(err => {throw err})
+  }
+
+  componentDidMount = () => {
+    const thiss = this
+    axios.get('/listusers')
+      .then(res => {
+        const {userslist} = res.data
+        // removing the username of the user from the list
+        try {
+          userslist.splice(userslist.indexOf(this.state.username),1)
+        } catch(e) {
+          //do nothing
+        }
+        thiss.setState({userslist})
       })
       .catch(err => {throw err})
   }
@@ -55,9 +73,10 @@ class App extends Component {
   }
 
   render() {
+    const {userslist, username} = this.state;
     return (
       <div className="App">
-        <UserList />
+        <UserList userslist={userslist} username={username}/>
         <ChatBox />
       </div>
     );
