@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Header } from 'semantic-ui-react';
 import './ChatBox.css'
 class ChatBox extends Component {
     constructor(props) {
@@ -15,7 +16,16 @@ class ChatBox extends Component {
     render() {
         return(
             <div className="chat">
-                ngfn
+                <Header as="h3" block>
+                <div
+                    className={"chat-letter"}
+                    style={{
+                        backgroundColor: "rgb(63, 81, 181)",
+                    }}>
+                        M
+                    </div>
+                Matthew
+                </Header>
             </div>
         )
     }

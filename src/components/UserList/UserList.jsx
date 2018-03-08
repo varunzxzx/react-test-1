@@ -38,7 +38,6 @@ class UserList extends Component {
         super(props);
 
         this.state = {
-            listHeight: 600,
             listRowHeight: 60,
             overscanRowCount: 10,
             scrollToIndex: undefined,
@@ -49,7 +48,6 @@ class UserList extends Component {
     }
     render() {
         const {
-            listHeight,
             listRowHeight,
             overscanRowCount,
             rowCount,
