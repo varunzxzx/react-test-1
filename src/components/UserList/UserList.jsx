@@ -38,7 +38,7 @@ class UserList extends Component {
         super(props);
 
         this.state = {
-            listHeight: 300,
+            listHeight: 500,
             listRowHeight: 50,
             overscanRowCount: 10,
             scrollToIndex: undefined,

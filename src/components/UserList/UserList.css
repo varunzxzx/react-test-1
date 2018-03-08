@@ -1,7 +1,8 @@
 .List {
     width: 100%;
     border: 1px solid #DDD;
-    margin-top: 15px;
+    padding-top: 30px;
+    float: left;
   }
   
   .row {
@@ -9,10 +10,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0 25px;
+    padding: 0 20px;
     background-color: #fff;
     border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
   }
+
+  .row:hover {
+    background: rgba(0,0,0,0.1);
+  }
+
   .letter {
     display: inline-block;
     height: 40px;

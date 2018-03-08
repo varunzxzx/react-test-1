@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import logo from './logo.svg';
 import UserList from './components/UserList/UserList'
-import './App.css';
 import Pusher from 'pusher-js';
 
 class App extends Component {
@@ -62,18 +60,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <label htmlFor="toUser">To User</label>
-        <input type="text" id="toUser" onChange={this.handleFormChange} name="toUser"/>
-        <label htmlFor="message">Message</label>
-        <input type="text" id="message" onChange={this.handleFormChange} name="message"/>
-        <div>
-          <button onClick={this.handleMessage}>Send</button>
-        </div>
         <UserList />
+        <div className="chat">
+          <label htmlFor="toUser">To User</label>
+          <input type="text" id="toUser" onChange={this.handleFormChange} name="toUser"/>
+          <label htmlFor="message">Message</label>
+          <input type="text" id="message" onChange={this.handleFormChange} name="message"/>
+          <div>
+            <button onClick={this.handleMessage}>Send</button>
+          </div>
+        </div>
       </div>
     );
   }
