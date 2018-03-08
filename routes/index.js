@@ -32,6 +32,15 @@ router.post('/send',(req,res) => {
   const channel = users[toUser];
   pusher.trigger(channel,'new-message',{message, toUser, username})
   return res.status(200).send({success: true})
-});
+})
+
+router.get('/listusers',(req, res) => {
+  let userslist = [];
+  for(key in users) {
+    userslist.push(key)
+  }
+  console.log(userslist)
+  return res.status(200).json({userslist});
+})
 
 module.exports = router;
