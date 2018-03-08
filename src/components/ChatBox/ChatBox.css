@@ -17,3 +17,13 @@
     font-size: 0.7em;
     margin-right: 12px;
 }
+
+.myInput {
+    width: 70%;
+    position: absolute;
+    bottom: 8px;
+}
+
+.ui.fluid.action.input > input {
+    /* width: 90% !important; */
+}

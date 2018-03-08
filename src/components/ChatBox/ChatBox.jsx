@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Input } from 'semantic-ui-react';
 import './ChatBox.css'
 class ChatBox extends Component {
     constructor(props) {
@@ -21,11 +21,14 @@ class ChatBox extends Component {
                     className={"chat-letter"}
                     style={{
                         backgroundColor: "rgb(63, 81, 181)",
-                    }}>
-                        M
-                    </div>
+                }}>
+                    M
+                </div>
                 Matthew
                 </Header>
+                <div className="myInput">
+                    <Input action={{ color: 'blue', content: 'Send' }} fluid placeholder='Enter your message here...' />
+                </div>
             </div>
         )
     }
