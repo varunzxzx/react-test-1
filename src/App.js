@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import UserList from './components/UserList/UserList'
+import ChatBox from './components/ChatBox/ChatBox'
 import Pusher from 'pusher-js';
 
 class App extends Component {
@@ -32,10 +33,6 @@ class App extends Component {
       .catch(err => {throw err})
   }
 
-  handleFormChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
-  }
-
   handleMessage = () => {
     const {message, toUser, username} = this.state;
     const payload = {message, toUser, username}
@@ -61,15 +58,7 @@ class App extends Component {
     return (
       <div className="App">
         <UserList />
-        <div className="chat">
-          <label htmlFor="toUser">To User</label>
-          <input type="text" id="toUser" onChange={this.handleFormChange} name="toUser"/>
-          <label htmlFor="message">Message</label>
-          <input type="text" id="message" onChange={this.handleFormChange} name="message"/>
-          <div>
-            <button onClick={this.handleMessage}>Send</button>
-          </div>
-        </div>
+        <ChatBox />
       </div>
     );
   }
