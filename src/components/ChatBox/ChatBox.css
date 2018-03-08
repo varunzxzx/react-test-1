@@ -24,6 +24,35 @@
     bottom: 8px;
 }
 
-.ui.fluid.action.input > input {
-    /* width: 90% !important; */
+.message-box {
+    overflow-y: scroll;
+    height: 75%;
+}
+
+.message-box::after {
+    display: table;
+    clear: both;
+}
+
+.message {
+    color: white;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 90%;
+    position: relative;
+}
+
+.self {
+    background: #94C2ED;
+    float: right;
+    margin-right: 10px;
+}
+
+.other {
+    background: #86BB71;
+    float: left;
+    margin-left: 10px;
 }
