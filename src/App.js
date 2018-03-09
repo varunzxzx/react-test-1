@@ -10,7 +10,7 @@ class App extends Component {
     message: '',
     toUser: '',
     userslist: [],
-    loading: true
+    loading: true,
   };
 
   componentWillMount() {
@@ -27,7 +27,7 @@ class App extends Component {
         //listen to new-message
         var channel = pusher.subscribe(response.data.user_id);
         channel.bind('new-message', function(data) {
-          alert(data.message);
+          thiss.setState({message: data.message})
         });
         const {user_id} = response.data;
         thiss.setState({loading: false, user_id, username})
@@ -81,7 +81,7 @@ class App extends Component {
     return (
       <div className="App">
         <UserList handleClick={this.handleClick} userslist={userslist}/>
-        <ChatBox handleMessage={this.handleMessage} toUser={toUser}/>
+        <ChatBox message={this.state.message} handleMessage={this.handleMessage} toUser={toUser}/>
       </div>
     );
   }

@@ -5,6 +5,7 @@ class ChatBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            usermsg: {},
             message: '',
             toUser: 'React Chat Application'
         }
@@ -12,8 +13,11 @@ class ChatBox extends Component {
 
     componentWillReceiveProps = (props) => {
         const {toUser} = props;
-        if(toUser)
-            this.setState({toUser})
+        const {usermsg} = this.state
+        if(toUser) {
+            usermsg[toUser] = {}
+            this.setState({toUser, usermsg})
+        }
     }
 
     handleFormChange = (e) => {
@@ -25,13 +29,26 @@ class ChatBox extends Component {
     }
 
     submit = () => {
-        const {message} = this.state
+        const {message, toUser} = this.state
         if(message){
-            this.props.handleMessage(message)
+            this.props.handleMessage(message);
+            const {usermsg} = this.state
+            const length = Object.keys(usermsg[toUser])
+            usermsg[toUser][`me${length}`] = message
+            this.setState({usermsg})
         }
     }
 
+    componentWillReceiveProps(props) {
+        console.log(props.message);
+        const {usermsg, toUser} = this.state
+        const length = Object.keys(usermsg[toUser])
+        usermsg[toUser][`other${length}`] = props.message
+        this.setState({usermsg})
+    }
+
     render() {
+        console.log(this.state.usermsg)
         return(
             <div className="chat">
                 <Header as="h3" block>
@@ -39,7 +56,7 @@ class ChatBox extends Component {
                     className={"chat-letter"}
                     style={{
                         backgroundColor: "rgb(63, 81, 181)",
-                }}>
+                    }}>
                     {this.state.toUser.charAt(0).toUpperCase()}
                 </div>
                 {this.state.toUser}
