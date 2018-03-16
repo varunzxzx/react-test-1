@@ -40,7 +40,7 @@ router.get('/listusers',(req, res) => {
   for(key in users) {
     userslist.push(key)
   }
-  console.log(userslist)
+  // console.log(userslist)
   return res.status(200).json({userslist});
 })
 
