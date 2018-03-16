@@ -31,4 +31,6 @@ app.use(function(err, req, res, next) {
   process.env.NODE_ENV !== "DEVELOPMENT" ? res.send(`<h1>Error Code: ${err.status || 500}</h1>`) : res.send(`<h1>Error Code: ${err.status || 500}</h1><br><p>${err.stack}</p>`);
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
