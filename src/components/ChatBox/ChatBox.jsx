@@ -7,7 +7,7 @@ class ChatBox extends Component {
         this.state = {
             usermsg: {},
             message: '',
-            toUser: 'React Chat Application'
+            toUser: '* React Chat Application *'
         }
     }
 
