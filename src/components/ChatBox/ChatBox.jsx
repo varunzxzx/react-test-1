@@ -48,7 +48,6 @@ class ChatBox extends Component {
     }
 
     render() {
-        console.log(this.state.usermsg)
         return(
             <div className="chat">
                 <Header as="h3" block>
