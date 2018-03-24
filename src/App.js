@@ -27,6 +27,7 @@ class App extends Component {
         //listen to new-message
         var channel = pusher.subscribe(response.data.user_id);
         channel.bind('new-message', function(data) {
+          alert(data.message);
           thiss.setState({message: data.message})
         });
         const {user_id} = response.data;
